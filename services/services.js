@@ -93,5 +93,4 @@ angular.module('ticketPortal')
     this.getTickets = function() {
         return tickets;
     };
-
 });
