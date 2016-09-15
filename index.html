@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html lang="en" ng-app="ticketPortal">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ticketing System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/mystyles.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-social.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">Ticketing System</a>
+    </div>
+    <div ui-view="ticketList"></div>
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="services/services.js"></script>
+    <script src="controllers/controllers.js"></script>
+    <script src="filters/customFilters.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular/angular-messages.js"></script>
+</body>
+
+</html>

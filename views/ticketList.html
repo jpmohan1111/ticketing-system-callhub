@@ -1,0 +1,96 @@
+<div class="container" ng-controller="ticketListCtrl">
+    <div class="col-sm-4">
+        <a ng-click="selectDepartment()" id="home" class="btn btn-block btn-primary btn-lg">Home</a>
+        <a ng-repeat="item in tickets | orderBy:'Department' | unique:'currentDepartmentId'" ng-click="selectDepartment(item)" class="btn btn-block btn-default btn-lg" ng-class="getDepartmentClass(item)">
+{{item}}
+</a>
+    </div>
+    <div class="container">
+        <div class="row row-tickets">
+            <div class="col-sm-4" ng-repeat="ticket in tickets  | filter:categoryFilterFn">
+                <div class="well ">
+                    <div>
+                        <h3>Sub: {{ticket.subject}}</h3>
+                        <p>Tickets Description: {{ticket.description}}</p>
+                        <p>Ticket Priority: {{ticket.prioritySLA}}</p>
+                        <p>Created On: {{ticket.dateCreated | date : 'MM/dd/yyyy @ h:mma'}}</p>
+                        <p>Ticket Created by: {{ticket.ticketOwner}}</p>
+                        <p>Department Assigned: {{ticket.currentDepartmentId}}</p>
+                        <p>SLA Timeperiod: {{ticket.slaTime}} days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="well col-sm-2 row-tickets" ng-show="ticket.subject">
+            <div>
+                <h3>{{ticket.subject}}</h3>
+                <p>Ticket Priority: {{ticket.prioritySLA}}</p>
+                <p>Ticket Subject: {{ticket.description}}</p>
+                <p>Department Assigned: {{ticket.currentDepartmentId}}</p>
+                <footer>Ticket Created by: {{ticket.ticketOwner}}, {{ ticket.date | date : 'MM/dd/yyyy @ h:mma'}}
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 ">
+            <form class="form-horizontal " name="ticketForm " ng-submit="submitticket(ticket) " novalidate>
+                <label for="subject ">Subject: </label>
+                <br/>
+                <input type="text " name="subject " ng-model="ticket.subject " required>
+                <div ng-messages="ticketForm.subject.$error " style="color:maroon " role="alert ">
+                    <div ng-message="required ">Please enter the subject</div>
+                </div>
+                <br/>
+                <br/>
+                <label for="prioritySLA ">Priority SLA: </label>
+                <br/>
+                <select ng-model="ticket.prioritySLA ">
+                    <option name="prioritySLA " value="High">High</option>
+                    <option name="prioritySLA " value="Medium">Medium</option>
+                    <option name="prioritySLA " value="Low">Low</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="description ">Description: </label>
+                <br/>
+                <textarea type="text " name="description " ng-model="ticket.description " required></textarea>
+                <div ng-messages="ticketForm.description.$error " style="color:maroon " role="alert ">
+                    <div ng-message="required ">Please enter the description</div>
+                </div>
+                <br/>
+                <br/>
+                <label for="ticketOwner ">You Name: </label>
+                <br/>
+                <input type="text " name="ticketOwner " ng-model="ticket.ticketOwner " required>
+                <div ng-messages="ticketForm.ticketOwner.$error " style="color:maroon " role="alert ">
+                    <div ng-message="required ">Please enter your name</div>
+                </div>
+                <br/>
+                <br/>
+                <label for="currentDepartmentId ">Department Name: </label>
+                <br/>
+                <select ng-model="ticket.currentDepartmentId ">
+                    <option name="currentDepartmentId " value="Marketing">Marketing</option>
+                    <option name="currentDepartmentId " value="IT">IT</option>
+                    <option name="currentDepartmentId " value="Sales">Sales</option>
+                    <option name="currentDepartmentId " value="Media">Media</option>
+                    <option name="currentDepartmentId " value="HR">HR</option>
+                    <option name="currentDepartmentId " value="Finance">Finance</option>
+                </select>
+                <br/>
+                <br/>
+                <label for="creatorTypeId ">Creating By: </label>
+                <br/>
+                <select ng-model="ticket.creatorTypeId ">
+                    <option name="creatorTypeId " value="User">User</option>
+                    <option name="creatorTypeId " value="Customer">Customer</option>
+                    <option name="creatorTypeId " value="Admin">Admin</option>
+                </select>
+                <br/>
+                <br/>
+                <button type="submit " class="btn btn-primary " ng-disabled="ticketForm.$invalid ">Comment</button>
+            </form>
+        </div>
+    </div>
+</div>
