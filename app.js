@@ -14,14 +14,14 @@ angular.module('ticketPortal', ['ui.router', "ngMessages", "customFilters"])
                 }
             }
 
-            .state('Yona', {
-                url: '/Yona',
-                views: {
-                    'Yona': {
-                        templateUrl: 'Yona/Yona.html'
-                    }
-                }
-            }));
+            // .state('Yona', {
+            //     url: '/Yona',
+            //     views: {
+            //         'Yona': {
+            //             templateUrl: 'Yona/Yona.html'
+            //         }
+            //     }
+            // }));
 
         $urlRouterProvider.otherwise('/');
     });
